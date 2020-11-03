@@ -890,11 +890,14 @@ ctwh_map.show(config=config)
 
 # In[56]:
 
+ctwh_bardata=ctwh_results.sort_values(by=['State Rating','ECV'], ascending=[True,False])
+ctwh_bardata.head()
 
-ctwh_bar = px.bar(ctwh_results, x="ECV", y='result' , color='State Rating', orientation='h',
+
+ctwh_bar = px.bar(ctwh_bardata, x="ECV", y='result' , color='State Rating', orientation='h',
              hover_data={'State_abb':False, 'result': False, 'States': True},
              height=300, width =1600,
-             text = ctwh_results['State_abb'], 
+             text = ctwh_bardata['State_abb'], 
              title= 'Predicted Electoral College Vote by State',
              #title='line1' + '<br>' +  '<span style="font-size: 18px;">line2</span>',
              labels=dict(result=" ", ECV="Total Electoral College Votes"),
